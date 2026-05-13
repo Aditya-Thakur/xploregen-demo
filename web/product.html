@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product — Xploregen Discoveries</title>
+  <link rel="icon" href="assets/logo-favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-screen-label="Product">
+
+<header class="site-header">
+  <div class="container wrap">
+    <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2 12h12l2-8H7"/></svg>
+        <span class="badge" data-cart-badge>0</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 7h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark style="width:32px;height:26px;display:inline-block"></span><span class="brand-name">Xploregen</span></a>
+    <button class="mobile-menu-btn drawer-close" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="index.html"><span class="num">01</span>Home</a>
+    <a href="shop.html"><span class="num">02</span>Shop</a>
+    <a href="about.html"><span class="num">03</span>About</a>
+    <a href="cart.html"><span class="num">04</span>Cart</a>
+  </nav>
+  <div class="drawer-foot">© 2026 · Xploregen Discoveries · Bengaluru</div>
+</div>
+
+<!-- Breadcrumbs -->
+<section style="padding:20px 0 0">
+  <div class="container" style="font-family:var(--mono);font-size:11px;letter-spacing:0.6px;color:var(--ink-mute);text-transform:uppercase">
+    <a href="index.html">Home</a> &nbsp;/&nbsp; <a href="shop.html">Shop</a> &nbsp;/&nbsp; <span id="bc-cat">…</span>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="pd-grid" id="pd-grid"></div>
+  </div>
+</section>
+
+<!-- Related products -->
+<section>
+  <div class="container">
+    <div class="section-rule"><span class="num">02</span><span class="line"></span><span class="label">You might also need</span></div>
+    <h2 class="display" style="font-size:clamp(28px,3.6vw,42px)">Pair it with these.</h2>
+    <div class="product-row no-scrollbar" id="related-row" style="margin-top:24px"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
+        <p>Better reagents. Bolder discoveries. Manufactured in Bengaluru.</p>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="shop.html">All products</a></li><li><a href="shop.html?cat=Extraction">Extraction kits</a></li><li><a href="shop.html?cat=Reagents">Reagents</a></li><li><a href="shop.html?cat=Buffers">Buffers</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="about.html#contact">Contact</a></li><li><a href="cart.html">Cart</a></li></ul></div>
+      <div><h4>HQ</h4><ul style="font-style:italic;opacity:0.7"><li>401, 4AB Cross,<br/>Kasturi Nagar Main Rd</li><li>Bengaluru 560043, KA</li><li>India</li></ul></div>
+    </div>
+    <div class="footer-foot"><span>© 2026 · Xploregen Discoveries</span><span>ISO 9001 · DSIR · MSME · GST</span></div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id') || 'xpat22m';
+    const p = window.XG_PRODUCTS.find((x) => x.id === id) || window.XG_PRODUCTS[0];
+    const grid = document.getElementById('pd-grid');
+    const bcCat = document.getElementById('bc-cat');
+    bcCat.textContent = p.cat;
+    document.title = p.name + ' — Xploregen Discoveries';
+
+    grid.innerHTML = `
+      <div class="pd-visual">
+        ${window.XG_productVisual({ ...p })}
+        <div style="position:absolute;top:14px;left:18px;font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--ink-mute)">${p.sku} · ${p.cat}</div>
+        ${p.tag ? `<div style="position:absolute;top:14px;right:18px;padding:5px 12px;border-radius:99px;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:10px;letter-spacing:0.8px">${p.tag}</div>` : ''}
+      </div>
+      <div class="pd-info">
+        <h1>${p.name}</h1>
+        <div class="pd-price-row">
+          <span class="price">${window.XG_FMT_INR(p.price)}</span>
+          <span class="pd-subtext">excl. GST · ${p.prep}</span>
+        </div>
+        <p class="pd-blurb">Optimised single-tube workflow for ${p.cat.toLowerCase() === 'extraction' ? 'high-yield recovery' : 'consistent results'} — every lot validated against multi-matrix QC standards, ready for PCR, NGS, and Sanger workflows.</p>
+
+        <div class="spec-list">
+          <div class="row"><span class="k">Method</span><span class="v">${p.method}</span></div>
+          <div class="row"><span class="k">Preps / size</span><span class="v">${p.prep}</span></div>
+          <div class="row"><span class="k">Specification</span><span class="v">${p.yield || '—'}</span></div>
+          <div class="row"><span class="k">Storage</span><span class="v">4 °C · 24 months</span></div>
+          <div class="row"><span class="k">Compatibility</span><span class="v">PCR · qPCR · NGS · Sanger</span></div>
+          <div class="row"><span class="k">Dispatch</span><span class="v">24–48h from Bengaluru</span></div>
+        </div>
+
+        <div class="pd-cta-row">
+          <div class="qty-stepper">
+            <button id="qty-minus" aria-label="Decrease">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/></svg>
+            </button>
+            <span class="v" id="qty-val">1</span>
+            <button id="qty-plus" aria-label="Increase">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+          <button class="btn btn-primary btn-lg" id="add-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2 12h12l2-8H7"/></svg>
+            Add to cart · <span id="add-total">${window.XG_FMT_INR(p.price)}</span>
+          </button>
+        </div>
+        <div style="margin-top:14px;font-family:var(--mono);font-size:10.5px;letter-spacing:0.8px;color:var(--ink-mute);text-transform:uppercase">
+          ✓ GST invoice provided · ✓ Bulk pricing on PO · ✓ Cold-chain dispatch
+        </div>
+      </div>
+    `;
+
+    // Qty stepper
+    let qty = 1;
+    const qtyVal = document.getElementById('qty-val');
+    const addTotal = document.getElementById('add-total');
+    function syncQty() { qtyVal.textContent = qty; addTotal.textContent = window.XG_FMT_INR(p.price * qty); }
+    document.getElementById('qty-minus').addEventListener('click', () => { qty = Math.max(1, qty - 1); syncQty(); });
+    document.getElementById('qty-plus').addEventListener('click', () => { qty += 1; syncQty(); });
+    document.getElementById('add-btn').addEventListener('click', () => { window.XG_CART.add(p.id, qty); });
+
+    // Related — same category (or fallback to bestsellers)
+    const related = window.XG_PRODUCTS.filter((x) => x.cat === p.cat && x.id !== p.id).slice(0, 4);
+    const list = related.length ? related : window.XG_FEATURED_IDS.filter((x) => x !== p.id).map((id) => window.XG_PRODUCTS.find((y) => y.id === id)).slice(0, 4);
+    const row = document.getElementById('related-row');
+    row.innerHTML = list.map((x) => `
+      <a class="product-card" href="product.html?id=${x.id}">
+        <div class="product-visual">${window.XG_productVisual(x)}<span class="sku">${x.sku}</span></div>
+        <div class="name">${x.name}</div>
+        <div class="meta">${x.cat} · ${x.prep}</div>
+        <div class="row"><span class="price">${window.XG_FMT_INR(x.price)}</span>
+          <button class="add" data-add="${x.id}">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add
+          </button>
+        </div>
+      </a>
+    `).join('');
+    row.querySelectorAll('[data-add]').forEach((b) => {
+      b.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); window.XG_CART.add(b.dataset.add, 1); });
+    });
+  });
+</script>
+</body>
+</html>

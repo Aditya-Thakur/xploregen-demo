@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart — Xploregen Discoveries</title>
+  <link rel="icon" href="assets/logo-favicon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body data-screen-label="Cart">
+
+<header class="site-header">
+  <div class="container wrap">
+    <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="header-actions">
+      <a href="cart.html" class="icon-btn active" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2 12h12l2-8H7"/></svg>
+        <span class="badge" data-cart-badge>0</span>
+      </a>
+      <button class="mobile-menu-btn" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 7h18M3 17h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark style="width:32px;height:26px;display:inline-block"></span><span class="brand-name">Xploregen</span></a>
+    <button class="mobile-menu-btn drawer-close" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="index.html"><span class="num">01</span>Home</a>
+    <a href="shop.html"><span class="num">02</span>Shop</a>
+    <a href="about.html"><span class="num">03</span>About</a>
+    <a href="cart.html"><span class="num">04</span>Cart</a>
+  </nav>
+  <div class="drawer-foot">© 2026 · Xploregen Discoveries · Bengaluru</div>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span>Your order</span>
+    <h1>Review <em>cart</em>.</h1>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="cart-layout" id="cart-layout">
+      <div id="cart-items"></div>
+      <div id="cart-summary"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
+        <p>Better reagents. Bolder discoveries. Manufactured in Bengaluru.</p>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="shop.html">All products</a></li><li><a href="shop.html?cat=Extraction">Extraction kits</a></li><li><a href="shop.html?cat=Reagents">Reagents</a></li><li><a href="shop.html?cat=Buffers">Buffers</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="about.html#contact">Contact</a></li><li><a href="cart.html">Cart</a></li></ul></div>
+      <div><h4>HQ</h4><ul style="font-style:italic;opacity:0.7"><li>401, 4AB Cross,<br/>Kasturi Nagar Main Rd</li><li>Bengaluru 560043, KA</li><li>India</li></ul></div>
+    </div>
+    <div class="footer-foot"><span>© 2026 · Xploregen Discoveries</span><span>ISO 9001 · DSIR · MSME · GST</span></div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+<script>
+  const ACC = { red: '#cf2a23', blue: '#1f4f9b', yellow: '#d8aa1b', green: '#2e8a5f' };
+
+  function render() {
+    const cart = window.XG_CART.read();
+    const items = Object.entries(cart)
+      .map(([id, qty]) => ({ p: window.XG_PRODUCTS.find((x) => x.id === id), qty }))
+      .filter((x) => x.p);
+
+    const itemsEl = document.getElementById('cart-items');
+    const summaryEl = document.getElementById('cart-summary');
+
+    if (items.length === 0) {
+      itemsEl.innerHTML = `
+        <div class="empty-state">
+          <h3>Nothing here yet.</h3>
+          <p>Browse the catalog and add a few kits — they'll show up here.</p>
+          <a class="btn btn-primary" href="shop.html">Browse catalog →</a>
+        </div>`;
+      summaryEl.innerHTML = '';
+      return;
+    }
+
+    itemsEl.innerHTML = items.map(({ p, qty }) => `
+      <div class="cart-item" data-id="${p.id}">
+        <a href="product.html?id=${p.id}" class="visual" style="text-decoration:none">
+          <div class="bar" style="background:${ACC[p.accent] || ACC.red}"></div>
+        </a>
+        <div class="info">
+          <h4><a href="product.html?id=${p.id}" style="border:none">${p.name}</a></h4>
+          <div class="sub">${p.sku} · ${p.cat} · ${p.prep}</div>
+          <div class="qty-mini">
+            <button data-act="dec" data-id="${p.id}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14"/></svg></button>
+            <span class="v">${qty}</span>
+            <button data-act="inc" data-id="${p.id}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+          </div>
+        </div>
+        <div class="end">
+          <div class="price">${window.XG_FMT_INR(p.price * qty)}</div>
+          <button data-act="rm" data-id="${p.id}" aria-label="Remove">×</button>
+        </div>
+      </div>
+    `).join('');
+
+    itemsEl.querySelectorAll('button[data-act]').forEach((b) => {
+      b.addEventListener('click', () => {
+        const id = b.dataset.id, act = b.dataset.act;
+        const c = window.XG_CART.read();
+        if (act === 'inc') window.XG_CART.set(id, (c[id] || 0) + 1);
+        else if (act === 'dec') window.XG_CART.set(id, Math.max(0, (c[id] || 0) - 1));
+        else if (act === 'rm') window.XG_CART.remove(id);
+        render();
+      });
+    });
+
+    const sub = items.reduce((s, { p, qty }) => s + p.price * qty, 0);
+    const gst = Math.round(sub * 0.18);
+    const total = sub + gst;
+
+    summaryEl.innerHTML = `
+      <div class="summary">
+        <h3>Order summary</h3>
+        <div class="line"><span>Subtotal (${items.reduce((s, x) => s + x.qty, 0)} items)</span><span>${window.XG_FMT_INR(sub)}</span></div>
+        <div class="line"><span>GST (18%)</span><span>${window.XG_FMT_INR(gst)}</span></div>
+        <div class="line"><span>Shipping</span><span>Calculated next</span></div>
+        <hr/>
+        <div class="total"><span>Total</span><span>${window.XG_FMT_INR(total)}</span></div>
+        <a class="btn btn-primary" href="checkout.html">Proceed to checkout →</a>
+        <div class="reassure">✓ GST invoice · ✓ Cold-chain dispatch · ✓ 24h support</div>
+      </div>
+    `;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    render();
+    window.addEventListener('xg-cart-changed', render);
+  });
+</script>
+</body>
+</html>
