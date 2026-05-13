@@ -48,11 +48,9 @@
   // strands forming the X, white "XPLOREGEN" wordmark with a white plate
   // behind it. viewBox 600 × 460.
   // animated=true: emits the .x-logo-anim wrapper class so CSS animations fire.
-  function logoSvg({ size = 200, animated = false, theme = 'dark', wordmark = true } = {}) {
+  function logoSvg({ size = 200, wordmark = true } = {}) {
     const w = size;
     const h = Math.round(size * 460 / 600);
-    const ink = theme === 'dark' ? '#fff' : '#13110d';
-    const plate = theme === 'dark' ? 'transparent' : 'transparent';
 
     // Bar geometry — 4 each side. Bars are MOSTLY uniform height with a
     // slight inward taper so the inner bars sit just below the red strands.
@@ -77,19 +75,18 @@
     // Red helix strands: cubic beziers from corner → through center → out corner.
     // Slightly bulged outward so each arm has a curving helix feel.
     const strandStyle = 'stroke:#cf2a23;stroke-width:38;stroke-linecap:round;fill:none';
-    const strand1 = `<path class="strand strand-1" d="M 50 80 C 130 130 240 220 300 235 C 360 250 470 340 550 390" style="${strandStyle}"/>`;
-    const strand2 = `<path class="strand strand-2" d="M 550 80 C 470 130 360 220 300 235 C 240 250 130 340 50 390" style="${strandStyle}"/>`;
+    const strand1 = `<path class="strand strand-1" d="M 50 90 C 80 40 230 60 300 235 C 320 410 470 420 550 380" style="${strandStyle}"/>`;
+    const strand2 = `<path class="strand strand-2" d="M 550 90 C 520 40 370 60 300 235 C 280 410 130 420 50 380" style="${strandStyle}"/>`;
 
-    // Wordmark plate + text. The plate is a slightly off-white pill placed
-    // across the X waist, and the wordmark is bold serif on top.
-    const plateY = 195, plateH = 70;
+    // Wordmark plate + text. Dark band across the X waist; white bold text on top.
+    const plateY = 200, plateH = 64;
     const wordmarkBlock = wordmark ? `
       <g class="wordmark-plate">
-        <rect x="36" y="${plateY}" width="528" height="${plateH}" rx="6" fill="${theme === 'dark' ? 'rgba(255,255,255,0.04)' : 'rgba(255,255,255,0.98)'}"/>
+        <rect x="36" y="${plateY}" width="528" height="${plateH}" rx="6" fill="rgba(0,0,0,0.82)"/>
       </g>
       <text class="wordmark" x="300" y="${plateY + plateH / 2 + 16}" text-anchor="middle"
-        font-family="'Fraunces', Georgia, serif" font-weight="700" font-size="52"
-        letter-spacing="2" fill="${ink}">XPLOREGEN</text>
+        font-family="'Inter', 'Fraunces', Georgia, serif" font-weight="800" font-size="50"
+        letter-spacing="3" fill="#ffffff">XPLOREGEN</text>
     ` : '';
 
     return `
@@ -103,7 +100,7 @@
   window.XG_logoSvg = logoSvg;
 
   // Build the compact brand mark used in headers — just the X, no wordmark
-  function brandMark(theme = 'dark') {
+  function brandMark() {
     return `
 <svg viewBox="0 0 600 460" width="100%" height="100%" style="display:block">
   ${(() => {
@@ -117,8 +114,8 @@
     for (let i = 0; i < 4; i++) out.push(`<rect x="${rightXs[i]}" y="${yTop + bend[i]}" width="${barW}" height="${yBot - yTop - bend[i] * 2}" rx="${barW / 2}" fill="${cols[i]}"/>`);
     return out.join('');
   })()}
-  <path d="M 50 80 C 130 130 240 220 300 235 C 360 250 470 340 550 390" stroke="#cf2a23" stroke-width="38" stroke-linecap="round" fill="none"/>
-  <path d="M 550 80 C 470 130 360 220 300 235 C 240 250 130 340 50 390" stroke="#cf2a23" stroke-width="38" stroke-linecap="round" fill="none"/>
+  <path d="M 50 90 C 80 40 230 60 300 235 C 320 410 470 420 550 380" stroke="#cf2a23" stroke-width="38" stroke-linecap="round" fill="none"/>
+  <path d="M 550 90 C 520 40 370 60 300 235 C 280 410 130 420 50 380" stroke="#cf2a23" stroke-width="38" stroke-linecap="round" fill="none"/>
 </svg>`.trim();
   }
   window.XG_brandMark = brandMark;
@@ -235,15 +232,19 @@
   }
   window.XG_startHelix = startHelix;
 
-  // ─────────── Mobile drawer ───────────
-  function mountMobileDrawer() {
-    const btn = document.querySelector('.mobile-menu-btn');
-    const drawer = document.querySelector('.mobile-drawer');
-    if (!btn || !drawer) return;
-    const close = drawer.querySelector('.drawer-close');
-    btn.addEventListener('click', () => { drawer.classList.add('open'); document.body.style.overflow = 'hidden'; });
-    if (close) close.addEventListener('click', () => { drawer.classList.remove('open'); document.body.style.overflow = ''; });
-    drawer.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => { drawer.classList.remove('open'); document.body.style.overflow = ''; }));
+  // ─────────── Mobile bottom nav active state ───────────
+  function mountMobileBottomNav() {
+    const btns = document.querySelectorAll('.mbn-btn');
+    if (!btns.length) return;
+    const page = window.location.pathname.split('/').pop() || 'index.html';
+    btns.forEach((btn) => {
+      const href = btn.getAttribute('href');
+      if (href === page || (page === '' && href === 'index.html') ||
+          (page === 'product.html' && href === 'shop.html') ||
+          (page === 'checkout.html' && href === 'cart.html')) {
+        btn.classList.add('active');
+      }
+    });
   }
 
   // ─────────── Header cart badge syncing ───────────
@@ -264,7 +265,7 @@
     // Inject animated landing logos
     document.querySelectorAll('[data-anim-logo]').forEach((el) => {
       const size = parseInt(el.dataset.animLogo, 10) || 200;
-      el.innerHTML = logoSvg({ size, animated: true, theme: 'light' });
+      el.innerHTML = logoSvg({ size });
       el.classList.add('x-logo', 'x-logo-anim');
     });
 
@@ -273,8 +274,8 @@
       window.XG_startHelix(cv);
     });
 
-    // Mobile menu
-    mountMobileDrawer();
+    // Mobile bottom nav
+    mountMobileBottomNav();
 
     // Cart badges
     syncCartBadges();

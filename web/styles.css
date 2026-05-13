@@ -227,12 +227,7 @@ h3.display { font-size: clamp(24px, 3.4vw, 36px); }
 }
 
 .header-actions { display: flex; align-items: center; gap: 10px; }
-.mobile-menu-btn {
-  display: inline-flex; width: 40px; height: 40px; border-radius: 999px;
-  align-items: center; justify-content: center;
-  background: transparent; border: 1px solid var(--hair); cursor: pointer;
-}
-@media (min-width: 768px) { .mobile-menu-btn { display: none; } }
+.mobile-menu-btn { display: none; }
 
 .mobile-drawer {
   position: fixed; inset: 0; z-index: 60;
@@ -253,6 +248,96 @@ h3.display { font-size: clamp(24px, 3.4vw, 36px); }
   margin-top: auto; padding-top: 24px;
   font-family: var(--mono); font-size: 10px; letter-spacing: 1.2px;
   color: var(--ink-mute); text-transform: uppercase;
+}
+
+/* ─────────── Mobile Bottom Nav ─────────── */
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  body { padding-bottom: 96px; }
+
+  .mobile-bottom-nav {
+    display: block;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+    padding-top: 8px;
+    background: linear-gradient(rgba(6, 8, 13, 0) 0%, rgba(6, 8, 13, 0.92) 55%);
+    z-index: 50;
+    pointer-events: none;
+  }
+
+  .mbn-inner {
+    pointer-events: auto;
+    margin: 0 12px;
+    border-radius: 22px;
+    padding: 8px 6px;
+    display: flex;
+    justify-content: space-around;
+    background: rgba(18, 22, 32, 0.78);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55);
+  }
+
+  .mbn-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 14px;
+    border-radius: 14px;
+    position: relative;
+    color: rgba(238, 241, 246, 0.35);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .mbn-btn.active {
+    color: var(--red);
+  }
+
+  .mbn-btn.active::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background: radial-gradient(circle, rgba(207, 42, 35, 0.14), transparent 70%);
+  }
+
+  .mbn-icon { color: inherit; line-height: 0; }
+
+  .mbn-btn.active .mbn-icon { filter: drop-shadow(0 0 6px rgba(207, 42, 35, 0.55)); }
+
+  .mbn-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .mbn-badge {
+    position: absolute;
+    top: 2px; right: 8px;
+    min-width: 16px; height: 16px;
+    padding: 0 4px;
+    background: var(--red);
+    color: #fff;
+    border-radius: 99px;
+    font-size: 10px;
+    font-family: var(--mono);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 /* ─────────── Hero ─────────── */
@@ -830,20 +915,29 @@ h3.display { font-size: clamp(24px, 3.4vw, 36px); }
 .x-logo { display: inline-block; }
 .x-logo svg { width: 100%; height: 100%; display: block; }
 
-/* Animated logo entrance. backwards fill-mode applies the `from` keyframe
-   during the delay only; after the animation ends, the element reverts to
-   its NATURAL state (visible). So even in environments that ignore CSS
-   animations, the final logo is always visible — animation is enhancement. */
-/* Animated logo entrance. Each rule uses `backwards` fill-mode so that AFTER
-   the animation finishes, elements revert to their NATURAL state — meaning
-   the logo is fully readable whether animations play (live browser) or not
-   (sandboxed snapshot, prefers-reduced-motion, no-JS, etc). */
+/* ─── Logo animation — 5 s continuous loop ────────────────────────────────
+   Every element is given animation-duration: 5s with iteration: infinite.
+   Timing is baked into keyframe percentages so the whole sequence stays in
+   sync across every loop without JS.
+
+   Cycle breakdown (5 s = 100%):
+     0  – 0.65 s  (0  – 13%): bars grow (staggered via animation-delay)
+     0.6– 1.6  s  (12 – 32%): strand-1 draws
+     0.78–1.78 s  (15.6–35.6%): strand-2 draws
+     1.45–1.9  s  (29 – 38%): wordmark plate fades in
+     1.55–2.15 s  (31 – 43%): wordmark text slides in
+     2.15–4.0  s  (43 – 80%): everything holds visible
+     2.2 –5.0  s  (44 – 100%): glow pulse on strands (one period)
+     4.0 –5.0  s  (80 –100%): everything fades/collapses back to start state
+   ───────────────────────────────────────────────────────────────────────── */
 
 .x-logo-anim .bar {
   transform-box: fill-box;
   transform-origin: 50% 100%;
-  animation: x-bar-grow 0.65s cubic-bezier(.2,.85,.3,1.05) backwards;
+  animation: x-bar-loop 5s linear infinite both;
 }
+/* Stagger via delay — for infinite animations the delay only applies before
+   iteration 1; subsequent iterations start immediately, preserving the offset. */
 .x-logo-anim .bar:nth-of-type(1) { animation-delay: 0.06s; }
 .x-logo-anim .bar:nth-of-type(2) { animation-delay: 0.14s; }
 .x-logo-anim .bar:nth-of-type(3) { animation-delay: 0.22s; }
@@ -852,42 +946,92 @@ h3.display { font-size: clamp(24px, 3.4vw, 36px); }
 .x-logo-anim .bar:nth-of-type(6) { animation-delay: 0.14s; }
 .x-logo-anim .bar:nth-of-type(7) { animation-delay: 0.22s; }
 .x-logo-anim .bar:nth-of-type(8) { animation-delay: 0.30s; }
-@keyframes x-bar-grow {
-  0%   { transform: scaleY(0); opacity: 0; }
-  100% { transform: scaleY(1); opacity: 1; }
+@keyframes x-bar-loop {
+  /* grow in with spring easing */
+  0%   { transform: scaleY(0); opacity: 0;
+         animation-timing-function: cubic-bezier(.2,.85,.3,1.05); }
+  13%  { transform: scaleY(1); opacity: 1; }
+  /* hold */
+  80%  { transform: scaleY(1); opacity: 1;
+         animation-timing-function: ease-in; }
+  /* collapse — ease-in avoids the overshoot that the spring curve would add */
+  95%  { transform: scaleY(0); opacity: 0; }
+  100% { transform: scaleY(0); opacity: 0; }
 }
 
-.x-logo-anim .strand {
-  animation: x-strand-draw 1s cubic-bezier(.55,0,.25,1) backwards;
+.x-logo-anim .strand-1 {
+  animation: x-strand-1-loop 5s linear infinite both;
 }
-.x-logo-anim .strand-1 { animation-delay: 0.6s; }
-.x-logo-anim .strand-2 { animation-delay: 0.78s; }
-@keyframes x-strand-draw {
-  from { stroke-dasharray: 1100; stroke-dashoffset: 1100; }
-  to   { stroke-dasharray: 1100; stroke-dashoffset: 0; }
+.x-logo-anim .strand-2 {
+  animation: x-strand-2-loop 5s linear infinite both;
+}
+
+@keyframes x-strand-1-loop {
+  /* wait */
+  0%    { stroke-dasharray: 1100; stroke-dashoffset: 1100; filter: none; }
+  12%   { stroke-dasharray: 1100; stroke-dashoffset: 1100; filter: none;
+          animation-timing-function: cubic-bezier(.55,0,.25,1); }
+  /* draw */
+  32%   { stroke-dasharray: 1100; stroke-dashoffset: 0; filter: none; }
+  /* glow pulse peak at midpoint of hold (61.5 %) */
+  61.5% { stroke-dasharray: 1100; stroke-dashoffset: 0;
+          filter: drop-shadow(0 0 9px rgba(207,42,35,0.75)); }
+  80%   { stroke-dasharray: 1100; stroke-dashoffset: 0; filter: none;
+          animation-timing-function: ease-in; }
+  /* erase */
+  95%   { stroke-dasharray: 1100; stroke-dashoffset: 1100; filter: none; }
+  100%  { stroke-dasharray: 1100; stroke-dashoffset: 1100; filter: none; }
+}
+
+@keyframes x-strand-2-loop {
+  0%    { stroke-dasharray: 1100; stroke-dashoffset: 1100; filter: none; }
+  15.6% { stroke-dasharray: 1100; stroke-dashoffset: 1100; filter: none;
+          animation-timing-function: cubic-bezier(.55,0,.25,1); }
+  /* draw */
+  35.6% { stroke-dasharray: 1100; stroke-dashoffset: 0; filter: none; }
+  /* glow pulse — offset 4.5 % from strand-1 for a living-DNA feel */
+  66%   { stroke-dasharray: 1100; stroke-dashoffset: 0;
+          filter: drop-shadow(0 0 9px rgba(207,42,35,0.75)); }
+  80%   { stroke-dasharray: 1100; stroke-dashoffset: 0; filter: none;
+          animation-timing-function: ease-in; }
+  /* erase */
+  95%   { stroke-dasharray: 1100; stroke-dashoffset: 1100; filter: none; }
+  100%  { stroke-dasharray: 1100; stroke-dashoffset: 1100; filter: none; }
+}
+
+.x-logo-anim .wordmark-plate {
+  animation: x-plate-loop 5s linear infinite both;
+}
+@keyframes x-plate-loop {
+  0%   { opacity: 0; }
+  29%  { opacity: 0; animation-timing-function: ease-out; }
+  38%  { opacity: 1; }
+  80%  { opacity: 1; animation-timing-function: ease-in; }
+  95%  { opacity: 0; }
+  100% { opacity: 0; }
 }
 
 .x-logo-anim .wordmark {
-  animation: x-wordmark-in 0.6s cubic-bezier(.2,.85,.3,1) 1.55s backwards;
+  animation: x-wordmark-loop 5s linear infinite both;
 }
-@keyframes x-wordmark-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.x-logo-anim .wordmark-plate {
-  animation: x-plate-in 0.45s ease 1.45s backwards;
-}
-@keyframes x-plate-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+@keyframes x-wordmark-loop {
+  0%   { opacity: 0; transform: translateY(8px); }
+  31%  { opacity: 0; transform: translateY(8px);
+         animation-timing-function: cubic-bezier(.2,.85,.3,1); }
+  43%  { opacity: 1; transform: translateY(0); }
+  80%  { opacity: 1; transform: translateY(0); animation-timing-function: ease-in; }
+  95%  { opacity: 0; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .x-logo-anim .bar,
-  .x-logo-anim .strand,
+  .x-logo-anim .strand-1,
+  .x-logo-anim .strand-2,
   .x-logo-anim .wordmark,
   .x-logo-anim .wordmark-plate {
     animation: none;
+    filter: none;
   }
 }
 

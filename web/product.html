@@ -27,28 +27,32 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2 12h12l2-8H7"/></svg>
         <span class="badge" data-cart-badge>0</span>
       </a>
-      <button class="mobile-menu-btn" aria-label="Open menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 7h18M3 17h18"/></svg>
-      </button>
     </div>
   </div>
 </header>
 
-<div class="mobile-drawer" aria-hidden="true">
-  <div class="drawer-head">
-    <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark style="width:32px;height:26px;display:inline-block"></span><span class="brand-name">Xploregen</span></a>
-    <button class="mobile-menu-btn drawer-close" aria-label="Close menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
+<!-- ─────────── Mobile Bottom Nav ─────────── -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <div class="mbn-inner">
+    <a href="index.html" class="mbn-btn">
+      <span class="mbn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 9v11h14V9"/></svg></span>
+      <span class="mbn-label">Home</span>
+    </a>
+    <a href="shop.html" class="mbn-btn">
+      <span class="mbn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16l-1.5 12a2 2 0 01-2 1.7H7.5a2 2 0 01-2-1.7L4 7z"/><path d="M9 7V5a3 3 0 016 0v2"/></svg></span>
+      <span class="mbn-label">Shop</span>
+    </a>
+    <a href="about.html" class="mbn-btn">
+      <span class="mbn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c1-3.5 4-5.5 7-5.5s6 2 7 5.5"/></svg></span>
+      <span class="mbn-label">About</span>
+    </a>
+    <a href="cart.html" class="mbn-btn">
+      <span class="mbn-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2 12h12l2-8H7"/></svg></span>
+      <span class="mbn-label">Cart</span>
+      <span class="mbn-badge" data-cart-badge style="display:none">0</span>
+    </a>
   </div>
-  <nav>
-    <a href="index.html"><span class="num">01</span>Home</a>
-    <a href="shop.html"><span class="num">02</span>Shop</a>
-    <a href="about.html"><span class="num">03</span>About</a>
-    <a href="cart.html"><span class="num">04</span>Cart</a>
-  </nav>
-  <div class="drawer-foot">© 2026 · Xploregen Discoveries · Bengaluru</div>
-</div>
+</nav>
 
 <!-- Breadcrumbs -->
 <section style="padding:20px 0 0">
