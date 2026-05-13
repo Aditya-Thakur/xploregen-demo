@@ -729,11 +729,29 @@ h3.display { font-size: clamp(24px, 3.4vw, 36px); }
 .qty-stepper button:hover { background: var(--paper-2); }
 .qty-stepper .v { width: 28px; text-align: center; font-family: var(--serif); font-size: 17px; font-weight: 600; }
 
+.pd-downloads {
+  margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--hair);
+}
+.pd-downloads-label {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--ink-mute); margin-bottom: 10px;
+}
+.pd-downloads-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.pd-dl-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px; border-radius: 99px;
+  border: 1px solid var(--hair); background: var(--paper-2);
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.8px;
+  color: var(--ink-soft); text-transform: uppercase; text-decoration: none;
+  transition: border-color .15s ease, color .15s ease, background .15s ease;
+}
+.pd-dl-btn:hover { border-color: var(--ink); color: var(--ink); background: var(--paper); }
+
 .pd-cta-row {
   display: flex; align-items: center; gap: 12px; margin-top: 26px;
   padding: 18px 0 0; border-top: 1px solid var(--hair); flex-wrap: wrap;
 }
-.pd-cta-row .btn { flex: 1; min-width: 220px; }
+.pd-cta-row .btn { flex: 1; min-width: 180px; }
 
 /* ─────────── About ─────────── */
 
