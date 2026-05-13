@@ -85,7 +85,7 @@
         <rect x="36" y="${plateY}" width="528" height="${plateH}" rx="6" fill="rgba(0,0,0,0.82)"/>
       </g>
       <text class="wordmark" x="300" y="${plateY + plateH / 2 + 16}" text-anchor="middle"
-        font-family="'Inter', 'Fraunces', Georgia, serif" font-weight="800" font-size="50"
+        font-family="'Space Grotesk', 'Manrope', 'Avenir Next', 'Segoe UI', sans-serif" font-weight="800" font-size="50"
         letter-spacing="3" fill="#ffffff">XPLOREGEN</text>
     ` : '';
 

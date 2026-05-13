@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Checkout — Xploregen Discoveries</title>
+  <meta name="description" content="Confirm order details, review payment steps, and complete checkout for Xploregen products." />
   <link rel="icon" href="assets/logo-favicon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -16,7 +17,13 @@
 
 <header class="site-header">
   <div class="container wrap">
-    <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
+    <a class="brand" href="index.html" aria-label="Xploregen home">
+      <span class="brand-logo" data-brand-mark></span>
+      <span>
+        <span class="brand-name">Xploregen</span>
+        <span class="brand-tag">Research-ready discoveries</span>
+      </span>
+    </a>
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -24,6 +31,7 @@
       <a href="about.html">About</a>
     </nav>
     <div class="header-actions">
+      <a href="support.html" class="btn btn-header">Talk to a scientist</a>
       <a href="cart.html" class="icon-btn" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2 12h12l2-8H7"/></svg>
         <span class="badge" data-cart-badge>0</span>
@@ -32,7 +40,6 @@
   </div>
 </header>
 
-<!-- ─────────── Mobile Bottom Nav ─────────── -->
 <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
   <div class="mbn-inner">
     <a href="index.html" class="mbn-btn">
@@ -55,135 +62,194 @@
   </div>
 </nav>
 
-<section class="page-hero">
-  <div class="container">
-    <span class="eyebrow"><span class="dot"></span>Step 02 of 02 · Payment</span>
-    <h1>Almost <em>there</em>.</h1>
-    <p>Confirm your details, scan the QR with any UPI app, and send the payment screenshot on WhatsApp — we'll dispatch within 24 hours.</p>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="checkout-grid">
-      <!-- LEFT — billing & shipping -->
-      <div>
-        <h2 class="display" style="font-size:clamp(22px,2.6vw,28px);margin-bottom:18px">Billing &amp; shipping</h2>
-
-        <div class="field-group">
-          <div class="field-row">
-            <div class="field"><label>Full name</label><input type="text" placeholder="Dr. Anita Verma" value="" /></div>
-            <div class="field"><label>Institution</label><input type="text" placeholder="IISc Bengaluru" /></div>
-          </div>
-          <div class="field-row">
-            <div class="field"><label>Email</label><input type="email" placeholder="anita@iisc.ac.in" /></div>
-            <div class="field"><label>Phone</label><input type="tel" placeholder="+91 98xxxxxxxx" /></div>
-          </div>
-          <div class="field"><label>Shipping address</label><textarea placeholder="Department, Lab, Building, City, PIN"></textarea></div>
-          <div class="field-row">
-            <div class="field"><label>GSTIN (optional)</label><input type="text" placeholder="29ABCDE1234F1Z5" /></div>
-            <div class="field"><label>PO number (optional)</label><input type="text" placeholder="—" /></div>
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span>Checkout</span>
+          <h1>Confirm the details, then complete payment cleanly.</h1>
+          <p>
+            This flow is designed for research teams that often need buyer details, GST information, shipping context, and an easy handoff into WhatsApp confirmation.
+          </p>
+          <div class="page-kpis">
+            <span>Step 02 of 02</span>
+            <span>UPI payment</span>
+            <span>WhatsApp confirmation</span>
           </div>
         </div>
 
-        <!-- Payment card -->
-        <div class="payment-card" style="margin-top:30px">
-          <h3>Pay by UPI</h3>
-          <p class="sub">Scan with PhonePe, Google Pay, Paytm, BHIM — any UPI-enabled app.</p>
-
-          <div class="qr-wrap">
-            <div class="qr" id="qr-target"></div>
-            <div class="upi">xploregen<span style="color:var(--ink-mute)">@upi</span></div>
-            <div class="pay-amount" id="pay-amount">₹0 <span>total payable</span></div>
+        <div class="page-stat-list">
+          <div class="mini-stat">
+            <div class="num">UPI</div>
+            <div class="label">payment mode</div>
           </div>
-
-          <!-- Steps -->
-          <div class="steps">
-            <div class="step">
-              <div class="num">1</div>
-              <div class="body">
-                <h5>Scan &amp; pay</h5>
-                <p>Open any UPI app, scan the QR above, and pay the exact total shown.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">2</div>
-              <div class="body">
-                <h5>Screenshot the receipt</h5>
-                <p>After payment, take a screenshot showing the transaction reference, amount, and your name.</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="num">3</div>
-              <div class="body">
-                <h5>Send it to us on WhatsApp</h5>
-                <p>Share the screenshot along with your order ID. We'll confirm receipt and dispatch within 24 hours.</p>
-                <a class="wa-link" id="wa-link" href="#" target="_blank" rel="noopener">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.4 18l-1.4 5 5.2-1.3A11 11 0 1020.5 3.5zM12 20.5a8.5 8.5 0 01-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.5 8.5 0 1112.7-1.9 8.5 8.5 0 01-5.5 5.8zm5-6.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1a7 7 0 01-2-1.3 7.5 7.5 0 01-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.4.2-.4c.1-.1.1-.3 0-.4l-.9-2.1c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3c.2.3 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4l-.4-.2z"/></svg>
-                  Send screenshot to +91 98765 43210
-                </a>
-                <p style="margin-top:8px;font-size:11.5px;color:var(--ink-mute);font-family:var(--mono);letter-spacing:0.4px">Open Mon–Sat · 09:00–19:00 IST · Avg. reply &lt;15 min</p>
-              </div>
-            </div>
+          <div class="mini-stat">
+            <div class="num">24h</div>
+            <div class="label">dispatch target after confirmation</div>
           </div>
-        </div>
-      </div>
-
-      <!-- RIGHT — order summary (sticky on desktop) -->
-      <div>
-        <div class="summary" id="order-summary">
-          <h3>Your order</h3>
-          <div id="order-lines"></div>
-          <hr/>
-          <div class="line"><span>Subtotal</span><span id="sum-sub">—</span></div>
-          <div class="line"><span>GST (18%)</span><span id="sum-gst">—</span></div>
-          <div class="line"><span>Shipping</span><span>FREE</span></div>
-          <hr/>
-          <div class="total"><span>Total</span><span id="sum-total">—</span></div>
-          <div class="reassure">Pay using QR · Send screenshot on WhatsApp · Dispatch in 24h</div>
+          <div class="mini-stat">
+            <div class="num">GST</div>
+            <div class="label">billing details supported</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="checkout-grid">
+        <div>
+          <h2 class="display" style="font-size:clamp(28px,3vw,38px);margin-bottom:18px">Billing and shipping details</h2>
+
+          <div class="field-group">
+            <div class="field-row">
+              <div class="field"><label>Full name</label><input type="text" placeholder="Dr. Anita Verma" value="" /></div>
+              <div class="field"><label>Institution</label><input type="text" placeholder="IISc Bengaluru" /></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Email</label><input type="email" placeholder="anita@iisc.ac.in" /></div>
+              <div class="field"><label>Phone</label><input type="tel" placeholder="+91 98xxxxxxxx" /></div>
+            </div>
+            <div class="field"><label>Shipping address</label><textarea placeholder="Department, lab, building, city, pin code"></textarea></div>
+            <div class="field-row">
+              <div class="field"><label>GSTIN (optional)</label><input type="text" placeholder="29ABCDE1234F1Z5" /></div>
+              <div class="field"><label>PO number (optional)</label><input type="text" placeholder="Reference if available" /></div>
+            </div>
+          </div>
+
+          <div class="payment-card" style="margin-top:28px">
+            <h3>Pay by UPI</h3>
+            <p class="sub">Scan with any UPI-enabled app, then share the payment screenshot so the order can move into confirmation and dispatch.</p>
+
+            <div class="qr-wrap">
+              <div class="qr" id="qr-target"></div>
+              <div class="upi">xploregen<span style="color:var(--ink-mute)">@upi</span></div>
+              <div class="pay-amount" id="pay-amount">₹0 <span>total payable</span></div>
+            </div>
+
+            <div class="steps">
+              <div class="step">
+                <div class="num">1</div>
+                <div class="body">
+                  <h5>Scan and pay</h5>
+                  <p>Use any UPI app to pay the exact amount shown on this page.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="num">2</div>
+                <div class="body">
+                  <h5>Keep the receipt visible</h5>
+                  <p>Take a screenshot that includes the amount, reference, and payer identity if possible.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="num">3</div>
+                <div class="body">
+                  <h5>Share it on WhatsApp</h5>
+                  <p>Send the screenshot and order details so the team can confirm payment and start dispatch processing.</p>
+                  <a class="wa-link" id="wa-link" href="#" target="_blank" rel="noopener">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 003.4 18l-1.4 5 5.2-1.3A11 11 0 1020.5 3.5zM12 20.5a8.5 8.5 0 01-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3a8.5 8.5 0 1112.7-1.9 8.5 8.5 0 01-5.5 5.8zm5-6.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1a7 7 0 01-2-1.3 7.5 7.5 0 01-1.4-1.7c-.1-.3 0-.4.1-.5l.4-.4.2-.4c.1-.1.1-.3 0-.4l-.9-2.1c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3c.2.3 2.1 3.3 5.2 4.6.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4l-.4-.2z"/></svg>
+                    Send screenshot to +91 98765 43210
+                  </a>
+                  <p style="margin-top:8px;color:var(--ink-mute);font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase">Mon–Sat · 09:00–19:00 IST</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="summary" id="order-summary">
+            <h3>Your order</h3>
+            <div id="order-lines"></div>
+            <hr/>
+            <div class="line"><span>Subtotal</span><span id="sum-sub">—</span></div>
+            <div class="line"><span>GST (18%)</span><span id="sum-gst">—</span></div>
+            <div class="line"><span>Shipping</span><span>FREE</span></div>
+            <hr/>
+            <div class="total"><span>Total</span><span id="sum-total">—</span></div>
+            <div class="reassure">UPI payment · screenshot confirmation · dispatch in 24h</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand"><a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
-        <p>Better reagents. Bolder discoveries. Manufactured in Bengaluru.</p>
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" data-brand-mark></span>
+          <span>
+            <span class="brand-name">Xploregen</span>
+            <span class="brand-tag">Research-ready discoveries</span>
+          </span>
+        </a>
+        <p>In-house molecular biology reagents and consumables for research teams that want cleaner runs, faster dispatch, and more responsive support.</p>
+        <div class="footer-badges">
+          <span>QC validated</span>
+          <span>GST ready</span>
+          <span>Cold-chain aware</span>
+        </div>
       </div>
-      <div><h4>Shop</h4><ul><li><a href="shop.html">All products</a></li><li><a href="shop.html?cat=Extraction">Extraction kits</a></li><li><a href="shop.html?cat=Reagents">Reagents</a></li><li><a href="shop.html?cat=Buffers">Buffers</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="support.html">Technical Support</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="about.html#contact">Contact</a></li></ul></div>
-      <div><h4>HQ</h4><ul style="font-style:italic;opacity:0.7"><li>401, 4AB Cross,<br/>Kasturi Nagar Main Rd</li><li>Bengaluru 560043, KA</li><li>India</li></ul></div>
+
+      <div>
+        <h4>Catalog</h4>
+        <ul>
+          <li><a href="shop.html">All products</a></li>
+          <li><a href="shop.html?cat=Extraction">Extraction kits</a></li>
+          <li><a href="shop.html?cat=Reagents">Reagents</a></li>
+          <li><a href="shop.html?cat=Buffers">Buffers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="support.html">Technical support</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Headquarters</h4>
+        <ul>
+          <li>401, 4AB Cross</li>
+          <li>Kasturi Nagar Main Rd</li>
+          <li>Bengaluru 560043, Karnataka</li>
+          <li>India</li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-foot"><span>© 2026 · Xploregen Discoveries</span><span>ISO 9001 · DSIR · MSME · GST</span></div>
+
+    <div class="footer-foot">
+      <span>© 2026 · Xploregen Discoveries</span>
+      <span>ISO 9001 · MSME · GST compliant ordering</span>
+    </div>
   </div>
 </footer>
 
 <script src="data.js"></script>
 <script src="script.js"></script>
 <script>
-  // ─── Dummy QR generator ────────────────────────────────────
-  // Builds a QR-looking SVG: 33x33 grid, three finder patterns in corners,
-  // one alignment pattern, and deterministic pseudo-random data fill seeded
-  // from the total amount + order summary. Not a real QR — visually only.
   function buildDummyQR(seedStr) {
     const N = 33;
-    // Mulberry32-ish deterministic RNG from a string seed
     let s = 0; for (let i = 0; i < seedStr.length; i++) s = (s * 31 + seedStr.charCodeAt(i)) | 0;
     function rng() { s |= 0; s = s + 0x6D2B79F5 | 0; let t = Math.imul(s ^ s >>> 15, 1 | s); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }
-    // Fill grid randomly
     const g = Array.from({ length: N }, () => Array.from({ length: N }, () => rng() < 0.46 ? 1 : 0));
-    // Place a 7x7 finder pattern (outer-black, middle-white, center-black)
     function placeFinder(r, c) {
       for (let dr = 0; dr < 7; dr++) for (let dc = 0; dc < 7; dc++) {
         const onEdge = dr === 0 || dr === 6 || dc === 0 || dc === 6;
-        const onMid  = (dr === 1 || dr === 5 || dc === 1 || dc === 5) && !(dr === 0 || dr === 6 || dc === 0 || dc === 6);
+        const onMid = (dr === 1 || dr === 5 || dc === 1 || dc === 5) && !(dr === 0 || dr === 6 || dc === 0 || dc === 6);
         const onCore = dr >= 2 && dr <= 4 && dc >= 2 && dc <= 4;
         g[r + dr][c + dc] = onEdge || onCore ? 1 : (onMid ? 0 : 0);
       }
-      // Quiet area around: 1-cell white border outside (only inside grid)
       for (let dr = -1; dr <= 7; dr++) for (let dc = -1; dc <= 7; dc++) {
         if (dr === -1 || dr === 7 || dc === -1 || dc === 7) {
           const rr = r + dr, cc = c + dc;
@@ -194,7 +260,6 @@
     placeFinder(0, 0);
     placeFinder(0, N - 7);
     placeFinder(N - 7, 0);
-    // Alignment pattern (5x5) near bottom-right
     function placeAlign(r, c) {
       for (let dr = 0; dr < 5; dr++) for (let dc = 0; dc < 5; dc++) {
         const onEdge = dr === 0 || dr === 4 || dc === 0 || dc === 4;
@@ -203,71 +268,67 @@
       }
     }
     placeAlign(N - 9, N - 9);
-    // Timing patterns (alternating line connecting finders)
     for (let i = 8; i < N - 8; i++) {
       g[6][i] = i % 2 === 0 ? 1 : 0;
       g[i][6] = i % 2 === 0 ? 1 : 0;
     }
 
-    // Render SVG
-    const cell = 6; // px per cell
+    const cell = 6;
     const pad = 12;
     const sz = N * cell + pad * 2;
     let cells = '';
     for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) {
       if (g[r][c]) cells += `<rect x="${pad + c * cell}" y="${pad + r * cell}" width="${cell}" height="${cell}" fill="#13110d"/>`;
     }
-    return `<svg viewBox="0 0 ${sz} ${sz}" width="${sz}" height="${sz}" style="display:block">
-      <rect width="${sz}" height="${sz}" rx="12" fill="#fff"/>
-      ${cells}
-      <!-- corner logo overlay -->
-      <g transform="translate(${sz / 2 - 22} ${sz / 2 - 22})">
-        <rect x="0" y="0" width="44" height="44" rx="8" fill="#fff"/>
-        <rect x="3" y="3" width="38" height="38" rx="5" fill="#cf2a23"/>
-        <text x="22" y="29" text-anchor="middle" font-family="Inter,sans-serif" font-weight="900" font-size="20" fill="#fff" letter-spacing="-1">X</text>
-      </g>
-    </svg>`;
+    return `<svg viewBox="0 0 ${sz} ${sz}" width="${sz}" height="${sz}" style="display:block"><rect width="${sz}" height="${sz}" rx="14" fill="#fff"/>${cells}</svg>`;
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     const cart = window.XG_CART.read();
-    const items = Object.entries(cart).map(([id, qty]) => ({ p: window.XG_PRODUCTS.find((x) => x.id === id), qty })).filter((x) => x.p);
     const linesEl = document.getElementById('order-lines');
-    const sumSub = document.getElementById('sum-sub');
-    const sumGst = document.getElementById('sum-gst');
-    const sumTotal = document.getElementById('sum-total');
-    const payAmount = document.getElementById('pay-amount');
     const qrTarget = document.getElementById('qr-target');
     const waLink = document.getElementById('wa-link');
 
-    const fmt = window.XG_FMT_INR;
-    let sub = 0;
+    const items = Object.entries(cart)
+      .map(([id, qty]) => ({ p: window.XG_PRODUCTS.find((x) => x.id === id), qty }))
+      .filter((x) => x.p);
+
     if (items.length === 0) {
-      linesEl.innerHTML = `<div style="padding:10px 0;font-style:italic;opacity:0.7;font-family:var(--serif)">Cart is empty — <a href="shop.html" style="border-bottom:1px solid rgba(244,241,234,0.4)">browse the catalog</a>.</div>`;
-    } else {
-      linesEl.innerHTML = items.map(({ p, qty }) => `
-        <div class="line" style="align-items:baseline">
-          <span style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.name}<span style="opacity:0.5"> · ×${qty}</span></span>
-          <span>${fmt(p.price * qty)}</span>
-        </div>`).join('');
-      sub = items.reduce((s, { p, qty }) => s + p.price * qty, 0);
+      linesEl.innerHTML = `<div class="line"><span>No items in cart</span><span>—</span></div>`;
+      document.getElementById('sum-sub').textContent = '₹0';
+      document.getElementById('sum-gst').textContent = '₹0';
+      document.getElementById('sum-total').textContent = '₹0';
+      document.getElementById('pay-amount').innerHTML = `₹0 <span>total payable</span>`;
+      qrTarget.innerHTML = buildDummyQR('empty');
+      waLink.href = 'https://wa.me/919876543210?text=Hi%20Xploregen%2C%20my%20cart%20is%20empty%20but%20I%20need%20help%20placing%20an%20order.';
+      return;
     }
+
+    linesEl.innerHTML = items.map(({ p, qty }) => `
+      <div class="line">
+        <span>${p.name} × ${qty}</span>
+        <span>${window.XG_FMT_INR(p.price * qty)}</span>
+      </div>
+    `).join('');
+
+    const sub = items.reduce((s, { p, qty }) => s + p.price * qty, 0);
     const gst = Math.round(sub * 0.18);
     const total = sub + gst;
-    sumSub.textContent = fmt(sub);
-    sumGst.textContent = fmt(gst);
-    sumTotal.textContent = fmt(total);
-    payAmount.innerHTML = `${fmt(total)} <span>total payable</span>`;
 
-    // Build the dummy QR seeded by the total
-    qrTarget.innerHTML = buildDummyQR('xploregen-' + total + '-' + Date.now());
+    document.getElementById('sum-sub').textContent = window.XG_FMT_INR(sub);
+    document.getElementById('sum-gst').textContent = window.XG_FMT_INR(gst);
+    document.getElementById('sum-total').textContent = window.XG_FMT_INR(total);
+    document.getElementById('pay-amount').innerHTML = `${window.XG_FMT_INR(total)} <span>total payable</span>`;
 
-    // WhatsApp deep link with prefilled message
-    const orderId = 'XG' + String(Date.now()).slice(-6);
-    const msg = encodeURIComponent(
-      `Hi Xploregen, I've just paid ${fmt(total)} via UPI for order ${orderId}. Attaching payment screenshot. Please confirm dispatch. Thank you!`
+    const summarySeed = items.map(({ p, qty }) => `${p.sku}:${qty}`).join('|') + `|${total}`;
+    qrTarget.innerHTML = buildDummyQR(summarySeed);
+
+    const orderText = encodeURIComponent(
+      `Hi Xploregen, I have completed the payment for my order.\n\nItems:\n` +
+      items.map(({ p, qty }) => `• ${p.sku} × ${qty}`).join('\n') +
+      `\n\nSubtotal: ${window.XG_FMT_INR(sub)}\nGST: ${window.XG_FMT_INR(gst)}\nTotal Paid: ${window.XG_FMT_INR(total)}\n\nAttaching screenshot now.`
     );
-    waLink.href = `https://wa.me/919876543210?text=${msg}`;
+    waLink.href = `https://wa.me/919876543210?text=${orderText}`;
   });
 </script>
 </body>

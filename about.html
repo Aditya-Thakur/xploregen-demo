@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Xploregen Discoveries</title>
+  <meta name="description" content="Learn about Xploregen Discoveries, a Bengaluru-based molecular biology company focused on reliable reagents, responsive support, and institution-ready supply." />
   <link rel="icon" href="assets/logo-favicon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -16,7 +17,13 @@
 
 <header class="site-header">
   <div class="container wrap">
-    <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
+    <a class="brand" href="index.html" aria-label="Xploregen home">
+      <span class="brand-logo" data-brand-mark></span>
+      <span>
+        <span class="brand-name">Xploregen</span>
+        <span class="brand-tag">Research-ready discoveries</span>
+      </span>
+    </a>
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -24,6 +31,7 @@
       <a href="about.html" class="active">About</a>
     </nav>
     <div class="header-actions">
+      <a href="support.html" class="btn btn-header">Talk to a scientist</a>
       <a href="cart.html" class="icon-btn" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2 12h12l2-8H7"/></svg>
         <span class="badge" data-cart-badge>0</span>
@@ -32,7 +40,6 @@
   </div>
 </header>
 
-<!-- ─────────── Mobile Bottom Nav ─────────── -->
 <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
   <div class="mbn-inner">
     <a href="index.html" class="mbn-btn">
@@ -55,161 +62,242 @@
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="page-hero">
-  <div class="container">
-    <span class="eyebrow"><span class="dot"></span>About</span>
-    <h1>A small lab<br/>with <em class="accent">big ratios</em>.</h1>
-    <p class="lead" style="margin-top:24px">
-      Xploregen Discoveries was founded in Bengaluru in 2022 by molecular biologists tired of importing buffers that arrived warm, kits that lost yield by month four, and luciferase reagents that needed a second-opinion plate every time.
-    </p>
-  </div>
-</section>
-
-<!-- Stats -->
-<section>
-  <div class="container">
-    <div class="about-stats">
-      <div class="row">
-        <span class="dot" style="background:var(--red)"></span>
-        <span class="num">2022</span>
-        <span class="label">Founded in Bengaluru</span>
-      </div>
-      <div class="row">
-        <span class="dot" style="background:var(--yellow)"></span>
-        <span class="num">62</span>
-        <span class="label">Catalog SKUs &amp; expanding</span>
-      </div>
-      <div class="row">
-        <span class="dot" style="background:var(--green)"></span>
-        <span class="num">180+</span>
-        <span class="label">Labs served across India</span>
-      </div>
-      <div class="row">
-        <span class="dot" style="background:var(--blue)"></span>
-        <span class="num">25,400</span>
-        <span class="label">Preps shipped to date</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Mission split -->
-<section>
-  <div class="container" style="display:grid;grid-template-columns:1fr;gap:32px;padding-top:30px">
-    <div class="section-rule"><span class="num">01</span><span class="line"></span><span class="label">Our Mission</span></div>
-    <h2 class="display" style="font-size:clamp(32px,4.5vw,56px)">
-      Make the reagent step so <em>reliable</em><br/>that no one notices&nbsp;it.
-    </h2>
-    <p class="body" style="font-size:16px;max-width:60ch">
-      Every batch we ship is tested against multi-matrix QC panels in our own lab. We don't repackage. We don't resell. We make the things our customers run experiments with — and we sweat the small specs (pH ± 0.05, A260/A280 ≥ 1.8, &lt; 0.5% lot variance) so they don't have to.
-    </p>
-  </div>
-</section>
-
-<!-- Timeline -->
-<section>
-  <div class="container">
-    <div class="section-rule"><span class="num">02</span><span class="line"></span><span class="label">Milestones</span></div>
-    <h2 class="display" style="font-size:clamp(28px,3.6vw,42px)">A short, fast history.</h2>
-    <div class="timeline" style="margin-top:24px;max-width:640px">
-      <div class="timeline-item">
-        <div class="year">2022</div>
-        <p>Lab incorporated in Kasturi Nagar, Bengaluru. First buffer batches roll off the line.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="year">2023</div>
-        <p>Genomic DNA extraction kits enter production. ISO 9001:2015 audit cleared.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="year">2024</div>
-        <p>Magnetic-bead extraction series launches across animal, bacterial, and algal matrices.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="year">2025</div>
-        <p>Firefly Bright luciferase debuts. Catalog crosses 50 SKUs. 100+ partner labs.</p>
-      </div>
-      <div class="timeline-item">
-        <div class="year">2026</div>
-        <p>OEM &amp; white-label channel opens for institutional partners and CRO programs.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Certifications -->
-<section>
-  <div class="container">
-    <div class="section-rule"><span class="num">03</span><span class="line"></span><span class="label">Certifications &amp; registrations</span></div>
-    <div class="cert-row">
-      <span class="cert">✓ ISO 9001:2015</span>
-      <span class="cert">✓ DSIR Recognised</span>
-      <span class="cert">✓ MSME Registered</span>
-      <span class="cert">✓ GST Compliant</span>
-      <span class="cert">✓ DPIIT Startup India</span>
-    </div>
-  </div>
-</section>
-
-<!-- Contact / Address -->
-<section id="contact">
-  <div class="container">
-    <div class="section-rule"><span class="num">04</span><span class="line"></span><span class="label">Visit, write, call</span></div>
-    <div style="display:grid;grid-template-columns:1fr;gap:18px" class="contact-grid">
-      <div class="address-card">
-        <div class="label">Headquarters</div>
-        <div class="addr">
-          401, 4AB Cross,<br/>
-          Kasturi Nagar Main Rd,<br/>
-          Doctors Layout, Kasturi Nagar,<br/>
-          Bengaluru 560043,<br/>
-          Karnataka, India
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span>About Xploregen</span>
+          <h1>Built by researchers who got tired of unreliable reagents.</h1>
+          <p>
+            Xploregen Discoveries started in Bengaluru with a simple operating belief: the reagent step should feel stable, transparent, and boring in the best possible way. When it does, research teams move faster and trust the outcome more.
+          </p>
+          <div class="page-kpis">
+            <span>In-house supply</span>
+            <span>Scientist-led support</span>
+            <span>Institution ready</span>
+          </div>
         </div>
-      </div>
-      <div class="address-card">
-        <div class="label">Reach us</div>
-        <div class="addr" style="font-style:normal;font-size:14.5px">
-          <strong>Sales &amp; orders</strong><br/>
-          <a href="mailto:sales@xploregen.com" style="border-bottom:1px solid var(--hair)">sales@xploregen.com</a><br/><br/>
-          <strong>Bulk &amp; OEM</strong><br/>
-          <a href="mailto:partners@xploregen.com" style="border-bottom:1px solid var(--hair)">partners@xploregen.com</a><br/><br/>
-          <strong>WhatsApp orders</strong><br/>
-          <a href="https://wa.me/919876543210" style="border-bottom:1px solid var(--hair)">+91 98765 43210</a>
+
+        <div class="page-stat-list">
+          <div class="mini-stat">
+            <div class="num">2022</div>
+            <div class="label">Founded in Bengaluru</div>
+          </div>
+          <div class="mini-stat">
+            <div class="num">24h</div>
+            <div class="label">standard dispatch target</div>
+          </div>
+          <div class="mini-stat">
+            <div class="num">180+</div>
+            <div class="label">labs and teams served</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<style>
-  @media (min-width: 768px) {
-    .contact-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
-  }
-</style>
-
-<!-- Bulk CTA -->
-<section>
-  <div class="container">
-    <div class="bulk-cta">
-      <span class="eyebrow"><span class="dot"></span>Bulk &amp; OEM</span>
-      <h2>Need <em>500+ preps</em><br/>a month?</h2>
-      <p>We custom-formulate buffers, lyophilize enzymes, and white-label kits for institutions, CROs, and IVD partners.</p>
-      <a href="mailto:partners@xploregen.com" class="btn">Talk to our team →</a>
+  <section class="section">
+    <div class="container">
+      <div class="section-rule">
+        <span class="num">01</span><span class="line"></span><span class="label">Mission</span>
+      </div>
+      <div class="mission-grid">
+        <div>
+          <h2 class="display">Make the reagent step disappear into the background of good science.</h2>
+        </div>
+        <div class="panel-card">
+          <h3>What that means in practice</h3>
+          <p>It means clearer documentation, tighter QC expectations, cleaner purchasing handoff, and support that understands experimental context instead of only order numbers.</p>
+          <ul class="list-check">
+            <li>Products manufactured and checked in-house</li>
+            <li>Support that can discuss ratios, workflow issues, and matrices</li>
+            <li>Operational fit for academic, institutional, and CRO buyers</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-rule">
+        <span class="num">02</span><span class="line"></span><span class="label">Snapshot</span>
+      </div>
+      <div class="about-metric-grid">
+        <div class="metric-card">
+          <div class="num">18</div>
+          <div class="label">Live catalog products</div>
+          <p>Focused across extraction kits, buffers, reagents, and collection supplies.</p>
+        </div>
+        <div class="metric-card">
+          <div class="num">25.4k</div>
+          <div class="label">Preps shipped to date</div>
+          <p>Growing through recurring institutional demand and lab-to-lab referrals.</p>
+        </div>
+        <div class="metric-card">
+          <div class="num">OEM</div>
+          <div class="label">Bulk programs available</div>
+          <p>Support for repeated volume, custom packaging, and white-label conversations.</p>
+        </div>
+        <div class="metric-card">
+          <div class="num">GST</div>
+          <div class="label">Procurement ready</div>
+          <p>Designed for teams that need cleaner paperwork and predictable vendor response.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-rule">
+        <span class="num">03</span><span class="line"></span><span class="label">Milestones</span>
+      </div>
+      <div class="timeline-grid">
+        <div class="timeline-item">
+          <div class="year">2022</div>
+          <h4>Company foundation</h4>
+          <p>Xploregen begins operations in Kasturi Nagar, Bengaluru, with a focus on core molecular biology consumables and reagent reliability.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2023–2024</div>
+          <h4>Extraction portfolio expands</h4>
+          <p>DNA and RNA workflows broaden across multiple matrices, including magnetic and column-based options for different lab preferences.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2025 onwards</div>
+          <h4>Institutional scale-up</h4>
+          <p>Support broadens toward bulk purchasing, OEM discussions, and steadier recurring supply partnerships with research teams and CROs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-rule">
+        <span class="num">04</span><span class="line"></span><span class="label">Registrations and trust markers</span>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="label">ISO 9001:2015</div>
+          <p>Quality-system credibility for teams that need confidence beyond marketing copy.</p>
+        </div>
+        <div class="cert-card">
+          <div class="label">DSIR linked</div>
+          <p>Signals alignment with research and innovation ecosystems relevant to scientific buyers.</p>
+        </div>
+        <div class="cert-card">
+          <div class="label">MSME registered</div>
+          <p>Useful context for institutions and organizations that prefer working with compliant Indian suppliers.</p>
+        </div>
+        <div class="cert-card">
+          <div class="label">GST compliant</div>
+          <p>Paperwork, invoicing, and ordering flows built for real purchase operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-rule">
+        <span class="num">05</span><span class="line"></span><span class="label">Visit, write, call</span>
+      </div>
+      <div class="contact-grid">
+        <div class="address-card">
+          <div class="label">Headquarters</div>
+          <div class="addr">
+            401, 4AB Cross,<br/>
+            Kasturi Nagar Main Rd,<br/>
+            Doctors Layout, Kasturi Nagar,<br/>
+            Bengaluru 560043
+          </div>
+          <p style="margin-top:14px">Lab visits and institutional discussions are best scheduled in advance so the right team is available.</p>
+        </div>
+
+        <div class="address-card">
+          <div class="label">Reach us</div>
+          <div class="addr" style="font-size:20px">
+            sales@xploregen.com<br/>
+            partners@xploregen.com<br/>
+            +91 98765 43210
+          </div>
+          <p style="margin-top:14px">Use email for order planning and documents, or WhatsApp for urgent troubleshooting and dispatch follow-up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="bulk-cta">
+        <span class="eyebrow"><span class="dot"></span>Bulk supply and OEM</span>
+        <h2>Need a <em>steady vendor relationship</em> instead of one-off ordering?</h2>
+        <p>
+          We work with institutions, CROs, and partner teams that need repeated ordering, technical confidence, and better communication between procurement and bench operations.
+        </p>
+        <a href="mailto:partners@xploregen.com" class="btn">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-brand"><a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
-        <p>Better reagents. Bolder discoveries. Manufactured in Bengaluru.</p>
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <span class="brand-logo" data-brand-mark></span>
+          <span>
+            <span class="brand-name">Xploregen</span>
+            <span class="brand-tag">Research-ready discoveries</span>
+          </span>
+        </a>
+        <p>In-house molecular biology reagents and consumables for research teams that want cleaner runs, faster dispatch, and more responsive support.</p>
+        <div class="footer-badges">
+          <span>QC validated</span>
+          <span>GST ready</span>
+          <span>Cold-chain aware</span>
+        </div>
       </div>
-      <div><h4>Shop</h4><ul><li><a href="shop.html">All products</a></li><li><a href="shop.html?cat=Extraction">Extraction kits</a></li><li><a href="shop.html?cat=Reagents">Reagents</a></li><li><a href="shop.html?cat=Buffers">Buffers</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="about.html">About us</a></li><li><a href="support.html">Technical Support</a></li><li><a href="downloads.html">Downloads</a></li><li><a href="about.html#contact">Contact</a></li></ul></div>
-      <div><h4>HQ</h4><ul style="font-style:italic;opacity:0.7"><li>401, 4AB Cross,<br/>Kasturi Nagar Main Rd</li><li>Bengaluru 560043, KA</li><li>India</li></ul></div>
+
+      <div>
+        <h4>Catalog</h4>
+        <ul>
+          <li><a href="shop.html">All products</a></li>
+          <li><a href="shop.html?cat=Extraction">Extraction kits</a></li>
+          <li><a href="shop.html?cat=Reagents">Reagents</a></li>
+          <li><a href="shop.html?cat=Buffers">Buffers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="support.html">Technical support</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Headquarters</h4>
+        <ul>
+          <li>401, 4AB Cross</li>
+          <li>Kasturi Nagar Main Rd</li>
+          <li>Bengaluru 560043, Karnataka</li>
+          <li>India</li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-foot"><span>© 2026 · Xploregen Discoveries</span><span>ISO 9001 · DSIR · MSME · GST</span></div>
+
+    <div class="footer-foot">
+      <span>© 2026 · Xploregen Discoveries</span>
+      <span>ISO 9001 · MSME · GST compliant ordering</span>
+    </div>
   </div>
 </footer>
 

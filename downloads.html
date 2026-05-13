@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Downloads — Xploregen Discoveries</title>
-  <meta name="description" content="Download Technical Data Sheets, Certificates of Analysis, and Protocol Manuals for all Xploregen kits and reagents." />
+  <meta name="description" content="Download technical data sheets, certificates of analysis, and protocol manuals for Xploregen products." />
   <link rel="icon" href="assets/logo-favicon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -17,7 +17,13 @@
 
 <header class="site-header">
   <div class="container wrap">
-    <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
+    <a class="brand" href="index.html" aria-label="Xploregen home">
+      <span class="brand-logo" data-brand-mark></span>
+      <span>
+        <span class="brand-name">Xploregen</span>
+        <span class="brand-tag">Research-ready discoveries</span>
+      </span>
+    </a>
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -25,6 +31,7 @@
       <a href="about.html">About</a>
     </nav>
     <div class="header-actions">
+      <a href="support.html" class="btn btn-header">Talk to a scientist</a>
       <a href="cart.html" class="icon-btn" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2 12h12l2-8H7"/></svg>
         <span class="badge" data-cart-badge>0</span>
@@ -55,49 +62,85 @@
   </div>
 </nav>
 
-<!-- Hero -->
-<section class="page-hero">
-  <div class="container">
-    <span class="eyebrow"><span class="dot"></span>Downloads</span>
-    <h1><em>Every document</em><br/>in one place.</h1>
-    <p>Technical Data Sheets (TDS), Certificates of Analysis (CoA), and step-by-step Protocol Manuals for our full catalog. Filter by category or search by SKU.</p>
-  </div>
-</section>
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span>Downloads</span>
+          <h1>Every document in one clean place.</h1>
+          <p>
+            Search by SKU, filter by category, and pull the technical documents that researchers, buyers, and compliance teams usually need before an order or troubleshooting step moves forward.
+          </p>
+          <div class="page-kpis">
+            <span>TDS library</span>
+            <span>CoA access</span>
+            <span>Protocol manuals</span>
+          </div>
+        </div>
 
-<!-- Filter + table -->
-<section>
-  <div class="container">
-    <div class="shop-bar">
-      <div class="search-input">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input id="dl-search" type="search" placeholder="Search by SKU or product name…" />
+        <div class="page-stat-list">
+          <div class="mini-stat">
+            <div class="num">3</div>
+            <div class="label">document types per product</div>
+          </div>
+          <div class="mini-stat">
+            <div class="num">Lot</div>
+            <div class="label">CoA requests supported</div>
+          </div>
+          <div class="mini-stat">
+            <div class="num">Fast</div>
+            <div class="label">procurement follow-up</div>
+          </div>
+        </div>
       </div>
-      <div class="cat-pills" id="dl-cat-pills"></div>
     </div>
-    <div class="results-line" id="dl-results"></div>
+  </section>
 
-    <div class="dl-table-wrap" style="margin-top:16px" id="dl-table"></div>
-  </div>
-</section>
+  <section class="section">
+    <div class="container">
+      <div class="catalog-shell">
+        <div class="shop-bar">
+          <div class="search-input">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input id="dl-search" type="search" placeholder="Search by SKU or product name..." />
+          </div>
+          <div class="cat-pills" id="dl-cat-pills"></div>
+        </div>
+        <div class="results-line" id="dl-results"></div>
+      </div>
 
-<!-- Notice -->
-<section>
-  <div class="container">
-    <div class="dl-notice">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      <p>CoA documents are lot-specific. If you need a CoA for a particular lot number not listed here, email <a href="mailto:support@xploregen.com">support@xploregen.com</a> with your order reference and lot number.</p>
+      <div class="dl-table-wrap" style="margin-top:20px" id="dl-table"></div>
+
+      <div class="dl-notice">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>Certificates of Analysis are lot-specific. If you need a CoA for a lot not listed here, email <a href="mailto:support@xploregen.com">support@xploregen.com</a> with the order reference and lot number.</p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
-        <p>Better reagents. Bolder discoveries. Manufactured in Bengaluru.</p>
+        <a class="brand" href="index.html">
+          <span class="brand-logo" data-brand-mark></span>
+          <span>
+            <span class="brand-name">Xploregen</span>
+            <span class="brand-tag">Research-ready discoveries</span>
+          </span>
+        </a>
+        <p>In-house molecular biology reagents and consumables for research teams that want cleaner runs, faster dispatch, and more responsive support.</p>
+        <div class="footer-badges">
+          <span>QC validated</span>
+          <span>GST ready</span>
+          <span>Cold-chain aware</span>
+        </div>
       </div>
-      <div><h4>Shop</h4>
+
+      <div>
+        <h4>Catalog</h4>
         <ul>
           <li><a href="shop.html">All products</a></li>
           <li><a href="shop.html?cat=Extraction">Extraction kits</a></li>
@@ -105,74 +148,34 @@
           <li><a href="shop.html?cat=Buffers">Buffers</a></li>
         </ul>
       </div>
-      <div><h4>Company</h4>
+
+      <div>
+        <h4>Company</h4>
         <ul>
           <li><a href="about.html">About us</a></li>
-          <li><a href="support.html">Technical Support</a></li>
+          <li><a href="support.html">Technical support</a></li>
           <li><a href="downloads.html">Downloads</a></li>
           <li><a href="about.html#contact">Contact</a></li>
         </ul>
       </div>
-      <div><h4>HQ</h4>
-        <ul style="font-style:italic;opacity:0.7">
-          <li>401, 4AB Cross,<br/>Kasturi Nagar Main Rd</li>
-          <li>Bengaluru 560043, KA</li>
+
+      <div>
+        <h4>Headquarters</h4>
+        <ul>
+          <li>401, 4AB Cross</li>
+          <li>Kasturi Nagar Main Rd</li>
+          <li>Bengaluru 560043, Karnataka</li>
           <li>India</li>
         </ul>
       </div>
     </div>
+
     <div class="footer-foot">
       <span>© 2026 · Xploregen Discoveries</span>
-      <span>ISO 9001 · DSIR · MSME · GST</span>
+      <span>ISO 9001 · MSME · GST compliant ordering</span>
     </div>
   </div>
 </footer>
-
-<style>
-  .dl-table-wrap {
-    border: 1px solid var(--hair); border-radius: 14px; overflow: hidden;
-  }
-  .dl-table {
-    width: 100%; border-collapse: collapse;
-    font-family: var(--sans); font-size: 14px;
-  }
-  .dl-table thead th {
-    background: var(--paper-2); padding: 12px 16px; text-align: left;
-    font-family: var(--mono); font-size: 10px; letter-spacing: 1.2px;
-    text-transform: uppercase; color: var(--ink-mute);
-    border-bottom: 1px solid var(--hair);
-  }
-  .dl-table tbody tr { border-bottom: 1px solid var(--hair-2); transition: background .12s ease; }
-  .dl-table tbody tr:last-child { border-bottom: none; }
-  .dl-table tbody tr:hover { background: var(--paper-2); }
-  .dl-table td { padding: 14px 16px; vertical-align: middle; }
-  .dl-table .td-name { font-family: var(--serif); font-weight: 600; font-size: 15px; line-height: 1.25; }
-  .dl-table .td-sku { font-family: var(--mono); font-size: 11px; color: var(--ink-mute); letter-spacing: 0.6px; margin-top: 2px; }
-  .dl-table .td-cat { font-family: var(--mono); font-size: 11px; color: var(--ink-mute); letter-spacing: 0.5px; }
-  .dl-table .td-docs { display: flex; gap: 6px; flex-wrap: wrap; }
-  .dl-doc-btn {
-    display: inline-flex; align-items: center; gap: 5px;
-    padding: 6px 11px; border-radius: 99px;
-    border: 1px solid var(--hair); background: var(--paper);
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.8px;
-    color: var(--ink-soft); text-transform: uppercase; text-decoration: none;
-    transition: border-color .12s ease, color .12s ease, background .12s ease;
-    white-space: nowrap;
-  }
-  .dl-doc-btn:hover { border-color: var(--ink); color: var(--ink); background: var(--paper-2); }
-
-  .dl-notice {
-    display: flex; gap: 12px; align-items: flex-start;
-    padding: 16px 20px; border-radius: 12px;
-    background: var(--paper-2); border: 1px solid var(--hair);
-    margin: 32px 0 0;
-    font-family: var(--sans); font-size: 13.5px; color: var(--ink-soft); line-height: 1.5;
-  }
-  .dl-notice svg { flex-shrink: 0; color: var(--ink-mute); margin-top: 2px; }
-  .dl-notice p { margin: 0; }
-  .dl-notice a { color: var(--ink); border-bottom: 1px solid var(--hair); }
-  .dl-notice a:hover { color: var(--red); border-color: var(--red); }
-</style>
 
 <script src="data.js"></script>
 <script src="script.js"></script>
@@ -206,7 +209,7 @@
       results.textContent = `${filtered.length} of ${window.XG_PRODUCTS.length} products`;
 
       if (filtered.length === 0) {
-        tableWrap.innerHTML = `<div class="empty-state"><h3>No matches.</h3><p>Try a different search or category.</p></div>`;
+        tableWrap.innerHTML = `<div class="empty-state"><h3>No matches.</h3><p>Try another keyword or switch to a different category.</p></div>`;
         return;
       }
 
@@ -223,15 +226,15 @@
             ${filtered.map((p) => `
               <tr>
                 <td>
-                  <div class="td-name"><a href="product.html?id=${p.id}" style="color:inherit">${p.name}</a></div>
+                  <div class="td-name">${p.name}</div>
                   <div class="td-sku">${p.sku}</div>
                 </td>
-                <td class="td-cat hide-mobile">${p.cat}</td>
+                <td class="hide-mobile"><div class="td-cat">${p.cat}</div></td>
                 <td>
                   <div class="td-docs">
-                    <a class="dl-doc-btn" href="#tds-${p.sku}" title="Technical Data Sheet">${dlIcon} TDS</a>
-                    <a class="dl-doc-btn" href="#coa-${p.sku}" title="Certificate of Analysis">${dlIcon} CoA</a>
-                    <a class="dl-doc-btn" href="#protocol-${p.sku}" title="Protocol Manual">${dlIcon} Protocol</a>
+                    <a class="dl-doc-btn" href="#" onclick="event.preventDefault(); window.XG_toast('Demo download: TDS for ${p.sku}');">${dlIcon} TDS</a>
+                    <a class="dl-doc-btn" href="#" onclick="event.preventDefault(); window.XG_toast('Demo download: CoA for ${p.sku}');">${dlIcon} CoA</a>
+                    <a class="dl-doc-btn" href="#" onclick="event.preventDefault(); window.XG_toast('Demo download: Protocol for ${p.sku}');">${dlIcon} Protocol</a>
                   </div>
                 </td>
               </tr>
@@ -246,8 +249,5 @@
     search.addEventListener('input', (e) => { q = e.target.value; renderTable(); });
   });
 </script>
-<style>
-  @media (max-width: 639px) { .hide-mobile { display: none; } }
-</style>
 </body>
 </html>

@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shop — Xploregen Discoveries</title>
+  <meta name="description" content="Browse Xploregen extraction kits, reagents, buffers, and collection supplies." />
   <link rel="icon" href="assets/logo-favicon.png" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -16,7 +17,13 @@
 
 <header class="site-header">
   <div class="container wrap">
-    <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
+    <a class="brand" href="index.html" aria-label="Xploregen home">
+      <span class="brand-logo" data-brand-mark></span>
+      <span>
+        <span class="brand-name">Xploregen</span>
+        <span class="brand-tag">Research-ready discoveries</span>
+      </span>
+    </a>
     <nav class="site-nav">
       <a href="index.html">Home</a>
       <a href="shop.html" class="active">Shop</a>
@@ -24,6 +31,7 @@
       <a href="about.html">About</a>
     </nav>
     <div class="header-actions">
+      <a href="support.html" class="btn btn-header">Talk to a scientist</a>
       <a href="cart.html" class="icon-btn" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M3 4h2l2 12h12l2-8H7"/></svg>
         <span class="badge" data-cart-badge>0</span>
@@ -32,7 +40,6 @@
   </div>
 </header>
 
-<!-- ─────────── Mobile Bottom Nav ─────────── -->
 <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
   <div class="mbn-inner">
     <a href="index.html" class="mbn-btn">
@@ -55,40 +62,80 @@
   </div>
 </nav>
 
-<!-- ─────────── Hero ─────────── -->
-<section class="page-hero">
-  <div class="container">
-    <span class="eyebrow"><span class="dot"></span>The Catalog</span>
-    <h1><em>Sixty-two</em> ways<br/>to start a run.</h1>
-    <p>Every kit, buffer, and reagent we manufacture — searchable, filterable, and ready to ship from our Bengaluru facility within 24 hours.</p>
-  </div>
-</section>
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-grid">
+        <div>
+          <span class="eyebrow"><span class="dot"></span>The catalog</span>
+          <h1>Browse the products that keep the workflow moving.</h1>
+          <p>
+            Search by SKU, filter by category, and move from product discovery to ordering without the clutter of a generic lab marketplace.
+          </p>
+          <div class="page-kpis">
+            <span>Extraction kits</span>
+            <span>Core buffers</span>
+            <span>Fast reorder flow</span>
+          </div>
+        </div>
 
-<!-- ─────────── Filter bar ─────────── -->
-<section>
-  <div class="container">
-    <div class="shop-bar">
-      <div class="search-input">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input id="search-input" type="search" placeholder="Search by SKU, kit, buffer…" />
+        <div class="page-stat-list">
+          <div class="mini-stat">
+            <div class="num">18</div>
+            <div class="label">live catalog products</div>
+          </div>
+          <div class="mini-stat">
+            <div class="num">24h</div>
+            <div class="label">dispatch target</div>
+          </div>
+          <div class="mini-stat">
+            <div class="num">GST</div>
+            <div class="label">invoice ready ordering</div>
+          </div>
+        </div>
       </div>
-      <div class="cat-pills" id="cat-pills"></div>
     </div>
-    <div class="results-line" id="results-line"></div>
+  </section>
 
-    <div class="product-grid" id="product-grid" style="margin-top:18px"></div>
-  </div>
-</section>
+  <section class="section">
+    <div class="container">
+      <div class="catalog-shell">
+        <div class="shop-bar">
+          <div class="search-input">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input id="search-input" type="search" placeholder="Search by SKU, kit, buffer, or workflow..." />
+          </div>
+          <div class="cat-pills" id="cat-pills"></div>
+        </div>
+        <div class="results-line" id="results-line"></div>
+      </div>
 
-<!-- ─────────── Footer ─────────── -->
+      <div class="product-grid" id="product-grid" style="margin-top:20px"></div>
+    </div>
+  </section>
+</main>
+
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="index.html"><span class="brand-logo" data-brand-mark></span><span class="brand-name">Xploregen</span><span class="brand-tag">Discoveries</span></a>
-        <p>Better reagents. Bolder discoveries. Manufactured in Bengaluru.</p>
+        <a class="brand" href="index.html">
+          <span class="brand-logo" data-brand-mark></span>
+          <span>
+            <span class="brand-name">Xploregen</span>
+            <span class="brand-tag">Research-ready discoveries</span>
+          </span>
+        </a>
+        <p>In-house molecular biology reagents and consumables for research teams that want cleaner runs, faster dispatch, and more responsive support.</p>
+        <div class="footer-badges">
+          <span>QC validated</span>
+          <span>GST ready</span>
+          <span>Cold-chain aware</span>
+        </div>
       </div>
-      <div><h4>Shop</h4>
+
+      <div>
+        <h4>Catalog</h4>
         <ul>
           <li><a href="shop.html">All products</a></li>
           <li><a href="shop.html?cat=Extraction">Extraction kits</a></li>
@@ -96,25 +143,31 @@
           <li><a href="shop.html?cat=Buffers">Buffers</a></li>
         </ul>
       </div>
-      <div><h4>Company</h4>
+
+      <div>
+        <h4>Company</h4>
         <ul>
           <li><a href="about.html">About us</a></li>
-          <li><a href="support.html">Technical Support</a></li>
+          <li><a href="support.html">Technical support</a></li>
           <li><a href="downloads.html">Downloads</a></li>
           <li><a href="about.html#contact">Contact</a></li>
         </ul>
       </div>
-      <div><h4>HQ</h4>
-        <ul style="font-style:italic;opacity:0.7">
-          <li>401, 4AB Cross,<br/>Kasturi Nagar Main Rd</li>
-          <li>Bengaluru 560043, KA</li>
+
+      <div>
+        <h4>Headquarters</h4>
+        <ul>
+          <li>401, 4AB Cross</li>
+          <li>Kasturi Nagar Main Rd</li>
+          <li>Bengaluru 560043, Karnataka</li>
           <li>India</li>
         </ul>
       </div>
     </div>
+
     <div class="footer-foot">
       <span>© 2026 · Xploregen Discoveries</span>
-      <span>ISO 9001 · DSIR · MSME · GST</span>
+      <span>ISO 9001 · MSME · GST compliant ordering</span>
     </div>
   </div>
 </footer>
@@ -129,7 +182,6 @@
     const search = document.getElementById('search-input');
 
     const cats = ['All', ...new Set(window.XG_PRODUCTS.map((p) => p.cat))];
-    // Initial category from URL ?cat=
     const params = new URLSearchParams(location.search);
     let active = params.get('cat') && cats.includes(params.get('cat')) ? params.get('cat') : 'All';
     let q = '';
@@ -149,7 +201,7 @@
       results.textContent = `${filtered.length} of ${window.XG_PRODUCTS.length} products · sorted by popularity`;
 
       if (filtered.length === 0) {
-        grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><h3>No matches.</h3><p>Try a different search or pick another category.</p></div>`;
+        grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><h3>No matches.</h3><p>Try a different search term or switch to another category.</p></div>`;
         return;
       }
 
